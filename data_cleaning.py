@@ -5,6 +5,10 @@ Created on Thu Mar  1 10:42:08 2018
 """
 import os
 import pandas as pd
+import time
+from tqdm import tqdm
+
+
 
 class data_cleaning:
 
@@ -17,12 +21,12 @@ class data_cleaning:
     def delete_char(self):
 
         total_filenames = os.listdir(self.dir)
-        for i in total_filenames:
-            filename = self.dir+ "/"+ i
+        for i in tqdm(range(len(total_filenames))):
+            filename = self.dir+ "/"+ total_filenames[i]
             openfile = open(filename, "r+")
             lines = openfile.read().splitlines()
             newlines = []
-            print (i)
+#            print (i)
 
             for j in lines:
                 wordslist = j.split(",")
@@ -37,9 +41,10 @@ class data_cleaning:
 
             df = pd.DataFrame(newlines, columns = self.labels)
             #保存dataframe为excel格式#
-            name = i[:-4]+".xls"
+            name = total_filenames[i][:-4]+".xls"
             newdir = self.dir[:-8] + "new_txt"
             df.to_excel(newdir+ "/"+ name)
+            # print((total_filenames.index(i)+1)/len(total_filenames))
 
 
 
