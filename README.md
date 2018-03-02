@@ -1,6 +1,7 @@
 # icpr3
 competition from tianchi
 # catalog
+```
 .
 ├── README.md
 ├── data_cleaning.py
@@ -9,3 +10,4 @@ competition from tianchi
         ├── image_1000
         ├── new_txt
         └── txt_1000
+```
