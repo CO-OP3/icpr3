@@ -44,8 +44,16 @@ class data_preprocessing:
         txt_df = self.txt_del_char(char)
         txt_df.to_excel(self.out_txtdir)
 
-    # 图像二值化
-    def edge_detect(self, par1, par2):
+
+    # 图像预处理 http://www.danvk.org/2015/01/07/finding-blocks-of-text-in-an-image-using-python-opencv-and-numpy.html#
+    def pic_process(self, par1, par2):
+
+        #灰度化读入#
+        img = cv2.imread(self.image_dir,cv2.IMREAD_GRAYSCALE)
+        #提取边缘化图#
+        canny = cv2.Canny(img, par1, par2)
+
+
 
 
 
